@@ -1,0 +1,48 @@
+@extends('layouts.main')
+@section('title', 'Curso Laravel')
+@section('content')
+
+<h1>DADOS DA TABELA - {{ $name }}</h1>
+@foreach($events as $event)
+    <p>{{ $event->title }} -- {{ $event->description }}</p>
+@endforeach
+
+
+        @if(1 < 5)
+             <p> Nome: {{ $nome }}</p>
+        @endif
+
+        @if( $nome == "Jackson")
+            <!--p>Nome da pessoa é: {{$nome}}</p-->
+            <p>Verdadeiro</p>
+            @elseif( $nome == "jackson")
+                <!--p>Nome da pessoa é: {{$nome}}</p-->
+                <p>Falso</p>
+            @else
+               <p>É outro nome!</p>             
+        @endif 
+        <p>Soma de valores: {{ $somaView }}</p>
+
+    <!--CONTADORES-->
+    <p>Tamanho lista: {{ count($list)}} </p>
+    @for($i = 0; $i < count($list); $i++)          
+        @if($i >= 5)
+          <p>Lista[{{$i}}]:{{ $list[$i]}}</p>
+        @endif  
+    @endfor
+    {{-- pode escrever em php deste jeito: --}}
+    @php
+    $estudo = "jackson_dev";
+    $ano = "2022";
+    echo $estudo."-".$ano;    
+    @endphp
+    {{--Comentario assim não aparece na view apenas no Blade--}}  
+    <div class="container border rounded-3 shadow bg-dark text-light p-3">
+        @foreach( $pessoas as $show)
+           <p>{{ $loop->index }}</p>
+           <p>Nome: {{$show}}</p>
+        @endforeach
+    </div>
+        <p>Total de pessoas:{{count($pessoas)}}</p>
+
+@endsection        
